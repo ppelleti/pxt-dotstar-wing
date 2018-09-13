@@ -1,10 +1,9 @@
 {
-    "name": "pxt-dotstar-wing",
+    "name": "dotstar-wing",
     "version": "0.0.0",
-    "description": "",
+    "description": "feather:bit with DotStar FeatherWing",
     "dependencies": {
-        "core": "*",
-        "radio": "*"
+        "core": "*"
     },
     "files": [
         "README.md",

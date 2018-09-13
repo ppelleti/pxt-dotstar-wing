@@ -15,10 +15,15 @@ Read more at https://makecode.microbit.org/packages/build-your-own
 
 ## License
 
+[MIT License](LICENSE.txt).
 
+Borrows some fragments of code from the [NeoPixel package][1] and the
+[scroll:bit package][2].
+
+[1]: https://github.com/microsoft/pxt-neopixel
+[2]: https://github.com/pimoroni/pxt-scrollbit
 
 ## Supported targets
 
 * for PXT/microbit
 (The metadata above is needed for package search.)
-
