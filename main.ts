@@ -116,39 +116,33 @@ namespace dotstarwing {
 
     /**
      * Scroll text across DotStar Wing
-     * @param text - text to scroll
-     * @param brightness - brightness to set (0-255)
-     * @param delay - additional delay in milliseconds (0-100)
+     * @param text text to scroll
+     * @param rgb RGB color of the text
+     * @param delay additional delay in milliseconds (0-100)
      */
     //% blockId=dotstarwing_scroll_text
-    //% block="scroll %text| at brightness %brightness| with delay (ms) %delay"
-    //% brightness.min=0 brightness.max=255 brightness.defl=128
+    //% block="scroll %text| in color %rgb=dotstarwing_colors| with delay (ms) %delay"
     //% delay.min=0 delay.max=100 delay.defl=50
-    export function scrollText(text: string,
-                               brightness: number = 128,
-                               delay: number = 50) {
+    export function scrollText(text: string, rgb: number, delay: number = 50) {
     }
 
     function setImage(image: Image,
                       col: number,
                       row: number,
-                      brightness: number = 128): void {
+                      rgb: number): void {
     }
 
     /**
      * Set a single pixel on DotStar Wing
-     * @param col - column to set (0-16)
-     * @param row - row to set (0-6)
-     * @param brightness - brightness to set (0-255)
+     * @param col column to set (0-11)
+     * @param row row to set (0-5)
+     * @param rgb RGB color to set
      */
     //% blockId=dotstarwing_set_pixel
-    //% block="set pixel| at col %col| row %row| to %brightness"
-    //% col.min=0 col.max=16
-    //% row.min=0 row.max=6
-    //% brightness.min=0 brightness.max=255 brightness.defl=128
-    export function setPixel(col: number,
-                             row: number,
-                             brightness: number = 128): void {
+    //% block="set pixel| at col %col| row %row| to %rgb=dotstarwing_colors"
+    //% col.min=0 col.max=11
+    //% row.min=0 row.max=5
+    export function setPixel(col: number, row: number, rgb: number): void {
     }
 
     /**
@@ -158,18 +152,6 @@ namespace dotstarwing {
     //% blockId=dotstarwing_show
     //% block="display your changes"
     export function show(): void {
-        let corrected_buf: Buffer = pins.createBuffer(144)
-
-        for (let x = 0; x < buf.length; x++) {
-            corrected_buf[x] = GAMMA[buf[x]]
-        }
-
-        smbus.writeByte(I2C_ADDR, REG_BANK, frame)
-        smbus.writeBuffer(I2C_ADDR, REG_COLOR, corrected_buf)
-        smbus.writeByte(I2C_ADDR, REG_BANK, BANK_CONFIG)
-        smbus.writeByte(I2C_ADDR, REG_FRAME, frame)
-
-        frame = frame == 0 ? 1 : 0
     }
 
     /**
@@ -196,12 +178,14 @@ namespace dotstarwing {
 
     /**
      * Get a single pixel on DotStar Wing,
-     * returns a brightness value (0-255)
-     * @param col - column to get (0-16)
-     * @param row - row to get (0-6)
+     * returns a color
+     * @param col - column to get (0-11)
+     * @param row - row to get (0-5)
      */
     //% blockId=dotstarwing_get_pixel icon="\uf0eb"
     //% block="get pixel| at col %col| row %row"
+    //% col.min=0 col.max=11
+    //% row.min=0 row.max=5
     //% advanced color=#554444
     export function getPixel(col: number, row: number): number {
     }
