@@ -27,7 +27,7 @@ enum DotStarWingColors {
 /**
  * DotStar FeatherWing used with feather:bit.
  */
-//% color="#ffff00" weight=50 icon="\uf0eb" block="DotStar Wing"
+//% color="#c0c000" weight=50 icon="\uf0eb" block="DotStar Wing"
 namespace dotstarwing {
     const COLS: number = 12
     const ROWS: number = 6
@@ -159,8 +159,6 @@ namespace dotstarwing {
      */
     //% blockId=dotstarwing_cols
     //% block="number of columns"
-    //% color=#444444
-    //% icon=""
     export function cols(): number {
         return COLS
     }
@@ -170,8 +168,6 @@ namespace dotstarwing {
      */
     //% blockId=dotstarwing_rows
     //% block="number of rows"
-    //% color=#444444
-    //% icon=""
     export function rows(): number {
         return ROWS
     }
@@ -182,11 +178,12 @@ namespace dotstarwing {
      * @param col - column to get (0-11)
      * @param row - row to get (0-5)
      */
-    //% blockId=dotstarwing_get_pixel icon="\uf0eb"
+    //% blockId=dotstarwing_get_pixel
     //% block="get pixel| at col %col| row %row"
     //% col.min=0 col.max=11
     //% row.min=0 row.max=5
-    //% advanced color=#554444
+    //% advanced
     export function getPixel(col: number, row: number): number {
+        return 0
     }
 }
