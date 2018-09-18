@@ -38,19 +38,15 @@ namespace dotstarwing {
      * @param green value of the green channel between 0 and 255. eg: 255
      * @param blue value of the blue channel between 0 and 255. eg: 255
      */
-    //% weight=1
     //% blockId="dotstarwing_rgb" block="red %red|green %green|blue %blue"
-    //% advanced=true
     export function rgb(red: number, green: number, blue: number): number {
         return packRGB(red, green, blue);
     }
 
     /**
      * Gets the RGB value of a known color
-    */
-    //% weight=2 blockGap=8
+     */
     //% blockId="dotstarwing_colors" block="%color"
-    //% advanced=true
     export function colors(color: DotStarWingColors): number {
         return color;
     }
@@ -78,6 +74,9 @@ namespace dotstarwing {
      * @param l luminosity from 0 to 99
      */
     //% blockId=dotstarwing_hsl block="hue %h|saturation %s|luminosity %l"
+    //% h.min=0 h.max=360 h.defl=0
+    //% s.min=0 s.max=99 s.defl=99
+    //% l.min=0 l.max=99 l.defl=50
     export function hsl(h: number, s: number, l: number): number {
         h = Math.round(h);
         s = Math.round(s);
@@ -123,13 +122,14 @@ namespace dotstarwing {
     //% blockId=dotstarwing_scroll_text
     //% block="scroll %text| in color %rgb=dotstarwing_colors| with delay (ms) %delay"
     //% delay.min=0 delay.max=100 delay.defl=50
+    //% text.shadowOptions.toString=true
     export function scrollText(text: string, rgb: number, delay: number = 50) {
     }
 
     function setImage(image: Image,
-                      col: number,
-                      row: number,
-                      rgb: number): void {
+        col: number,
+        row: number,
+        rgb: number): void {
     }
 
     /**
@@ -182,7 +182,6 @@ namespace dotstarwing {
     //% block="get pixel| at col %col| row %row"
     //% col.min=0 col.max=11
     //% row.min=0 row.max=5
-    //% advanced
     export function getPixel(col: number, row: number): number {
         return 0
     }
